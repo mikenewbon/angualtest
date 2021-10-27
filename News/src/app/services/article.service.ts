@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Article } from '../Article';
-import { ARTICLES } from '../mock_articles';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
+  private apiURL = "https://jsonplaceholder.typicode.com/posts"
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   getArticles(): Observable<Article[]> {
-    const articles = of(ARTICLES);
-    return articles;
+    return this.http.get<Article[]>(this.apiURL)
   }
 }
