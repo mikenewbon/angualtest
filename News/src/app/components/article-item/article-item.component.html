@@ -1,7 +1,7 @@
 <div class="col h-100">
   <div class="card h-100">
     <div class="card-body">
-      <h5 class="card-title">{{ article.title | titlecase }}</h5>
+      <a routerLink="articles/{{article.id}}"  class="card-title h5">{{ article.title | titlecase }}</a>
       <p class="card-text">{{ article.body }}</p>
     </div>
   </div>
