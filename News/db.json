@@ -1,0 +1,25 @@
+{
+  "comments": [
+    {
+      "id": 1,
+      "articleId": 1,
+      "name": "John Doe",
+      "email": "john.doe@email.com",
+      "body" : "What a great article."
+    },
+    {
+      "id": 2,
+      "articleId": 1,
+      "name": "John Doe",
+      "email": "john.doe@email.com",
+      "body" : "What a great article."
+    },
+    {
+      "id": 3,
+      "articleId": 2,
+      "name": "John Doe",
+      "email": "john.doe@email.com",
+      "body" : "What a great article."
+    }
+  ]
+}
