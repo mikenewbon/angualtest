@@ -1,1 +1,6 @@
-<p>comment-section works!</p>
+<div class="bg-dark rounded border px-4 pt-3 pb-0">
+  <h3 class="text-light mb-3">Comments</h3>
+  <div class="row row-cols-1 g-4 mb-4">
+    <app-comment-item *ngFor="let comment of comments" [comment]="comment"></app-comment-item>
+  </div>
+</div>
