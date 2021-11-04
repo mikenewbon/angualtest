@@ -3,5 +3,5 @@ export interface Comment {
   articleId: number;
   name: string;
   email: string;
-  body: string;
+  message: string;
 }

@@ -3,5 +3,5 @@
   <div class="row row-cols-1 g-4 mb-4">
     <app-comment-item *ngFor="let comment of comments" [comment]="comment"></app-comment-item>
   </div>
-  <app-comment-add></app-comment-add>
+  <app-comment-add (onComment)="comment($event)"></app-comment-add>
 </div>

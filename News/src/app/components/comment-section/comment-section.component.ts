@@ -13,9 +13,9 @@ export class CommentSectionComponent implements OnInit {
   comments: Comment[] = [];
 
   constructor(
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     private commentSerivce: CommentsService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     const articleId: number = +this.route.snapshot.paramMap.get('id')!;
@@ -24,4 +24,7 @@ export class CommentSectionComponent implements OnInit {
     )
   }
 
+  comment(comment: Comment) {
+
+  }
 }
