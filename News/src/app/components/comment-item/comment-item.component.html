@@ -1,7 +1,7 @@
 <div class="col h-100">
-  <div class="card h-100">
+  <div class="card text-white bg-secondary h-100">
     <div class="card-body">
-      <h4  class="card-title h5">{{ comment.name | titlecase }}</h4>
+      <h4  class="card-title h5">{{ comment.name | titlecase }} <span class="text-dark">({{ comment.email }})</span></h4>
       <p class="card-text">{{ comment.body }}</p>
     </div>
   </div>
