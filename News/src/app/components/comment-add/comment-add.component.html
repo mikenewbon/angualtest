@@ -1,16 +1,32 @@
 <div class="row text-light">
   <h5>Add Comment</h5>
-  <form (ngSubmit)="onSubmit()">
+  <form #commentForm="ngForm" (ngSubmit)="onSubmit()">
 
     <div class="mb-3">
       <label for="name" class="form-label">Full Name</label>
-      <input type="text" required class="form-control" name="name" [(ngModel)]="name" id="name">
+
+      <input type="text" required class="form-control" name="name" [(ngModel)]="name" minlength="4" id="name" #nameTemplate="ngModel" [class.is-invalid]="nameTemplate.errors?.['required'] && (nameTemplate.touched || nameTemplate.dirty)">
+
+      <div *ngIf="nameTemplate.invalid && (nameTemplate.dirty || nameTemplate.touched)" id="emailValidation" class="invalid-feedback">
+        Please fill in your name.
+      </div>
     </div>
 
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
 
-      <input type="email" required class="form-control" name="email" [(ngModel)]="email" email="true" id="email" aria-describedby="emailHelp" #emailTemplate="ngModel">
+      <input
+      type="email"
+      placeholder="name@email.com"
+      required
+      class="form-control"
+      name="email"
+      email="true"
+      id="email"
+      aria-describedby="emailHelp"
+      #emailTemplate="ngModel"
+      [(ngModel)]="email"
+      [class.is-invalid]="emailTemplate.errors?.['required'] && (commentForm.touched || commentForm.dirty)">
 
       <div *ngIf="emailTemplate.invalid && (emailTemplate.dirty || emailTemplate.touched)" id="emailValidation" class="invalid-feedback">
         Please use a valid email.
