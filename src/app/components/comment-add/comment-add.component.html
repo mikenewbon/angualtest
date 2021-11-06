@@ -1,72 +1,59 @@
 <div class="row text-light">
   <h5>Add Comment</h5>
   <form #commentForm="ngForm" (ngSubmit)="onSubmit();commentForm.reset()">
-    <div class="mb-3">
-      <label for="name" class="form-label">Full Name</label>
+      <div class="row">
+        <div class="col-6 mb-3">
+          <label for="name" class="form-label" [class.text-danger]="nameTemplate.errors?.['required'] && (nameTemplate.touched || nameTemplate.dirty)"
+          [class.text-success]="nameTemplate.errors == null && (nameTemplate.touched || nameTemplate.dirty)">Full Name</label>
+          <!-- {{ nameTemplate.errors | json }} -->
 
-      <input 
-      type="text" 
-      required 
-      class="form-control" 
-      name="name" 
-      placeholder="John Doe"
-      [(ngModel)]="name" 
-      minlength="4" 
-      id="name" 
-      #nameTemplate="ngModel" 
-      [class.is-invalid]="nameTemplate.errors?.['required'] && (nameTemplate.touched || nameTemplate.dirty)" 
-      [class.is-valid]="nameTemplate.errors == null && (nameTemplate.touched || nameTemplate.dirty)">
+          <input type="text" required class="form-control" name="name" placeholder="John Doe" [(ngModel)]="name"
+            id="name" #nameTemplate="ngModel"
+            [class.is-invalid]="nameTemplate.errors?.['required'] && (nameTemplate.touched || nameTemplate.dirty)"
+            [class.is-valid]="nameTemplate.errors == null && (nameTemplate.touched || nameTemplate.dirty)">
 
-      <div *ngIf="nameTemplate.invalid && (nameTemplate.dirty || nameTemplate.touched)" id="emailValidation" class="invalid-feedback">
-        Please fill in your name.
+          <div *ngIf="nameTemplate.errors?.['required'] && (nameTemplate.dirty || nameTemplate.touched)" id="emailValidation"
+            class="invalid-feedback">
+            Please fill in your name.
+          </div>
+        </div>
+        <div class="col-6 mb-3">
+          <label for="email" class="form-label" [class.text-danger]="(emailTemplate.errors?.['required'] || emailTemplate.errors?.['email']) && (emailTemplate.touched || emailTemplate.dirty)"
+          [class.text-success]="emailTemplate.errors == null && (emailTemplate.touched || emailTemplate.dirty)">Email address</label>
+
+          <input type="email" placeholder="name@email.com" required class="form-control" name="email" email="true"
+            id="email" aria-describedby="emailHelp" #emailTemplate="ngModel" [(ngModel)]="email"
+            [ngModelOptions]="{ updateOn: 'blur' }"
+            [class.is-invalid]="(emailTemplate.errors?.['required'] || emailTemplate.errors?.['email']) && (emailTemplate.touched || emailTemplate.dirty)"
+            [class.is-valid]="emailTemplate.errors == null && (emailTemplate.touched || emailTemplate.dirty)">
+
+          <div *ngIf="emailTemplate.errors?.['email'] && (emailTemplate.dirty || emailTemplate.touched)"
+            class="invalid-feedback">
+            Please use a valid email.
+          </div>
+          <div *ngIf="emailTemplate.errors?.['required'] && (emailTemplate.dirty || emailTemplate.touched)"
+            class="invalid-feedback">
+            An email address is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="message" class="form-label" [class.text-danger]="messageTemplate.errors?.['required'] && (messageTemplate.touched || messageTemplate.dirty)"
+          [class.text-success]="messageTemplate.errors == null && (messageTemplate.touched || messageTemplate.dirty)">Message</label>
+
+          <textarea class="form-control" required name="message" #messageTemplate="ngModel" [(ngModel)]="message"
+            id="message" rows="3"
+            [class.is-invalid]="(messageTemplate.errors?.['required'] || messageTemplate.errors?.['email']) && (messageTemplate.touched || messageTemplate.dirty)"
+            [class.is-valid]="messageTemplate.errors == null && (messageTemplate.touched || messageTemplate.dirty)"></textarea>
+
+          <div *ngIf="messageTemplate.invalid && (messageTemplate.dirty || messageTemplate.touched)"
+            class="invalid-feedback">
+            A message is required.
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="mb-3">
-      <label for="email" class="form-label">Email address</label>
- 
-      <input
-      type="email"
-      placeholder="name@email.com"
-      required
-      class="form-control"
-      name="email"
-      email="true"
-      id="email"
-      aria-describedby="emailHelp"
-      #emailTemplate="ngModel"
-      [(ngModel)]="email"
-      [ngModelOptions]="{ updateOn: 'blur' }"
-      [class.is-invalid]="(emailTemplate.errors?.['required'] || emailTemplate.errors?.['email']) && (emailTemplate.touched || emailTemplate.dirty)"
-      [class.is-valid]="emailTemplate.errors == null && (emailTemplate.touched || emailTemplate.dirty)">
-
-      <div *ngIf="emailTemplate.errors?.['email'] && (emailTemplate.dirty || emailTemplate.touched)" class="invalid-feedback">
-        Please use a valid email.
-      </div>
-      <div *ngIf="emailTemplate.errors?.['required'] && (emailTemplate.dirty || emailTemplate.touched)" class="invalid-feedback">
-        An email address is required.
-      </div>
-    </div>
-
-    <div class="mb-3">
-      <label for="message" class="form-label">Message</label>
-
-      <textarea 
-      class="form-control" 
-      required name="message" 
-      #messageTemplate="ngModel"
-      [(ngModel)]="message"
-      id="message" 
-      rows="3"
-      [class.is-invalid]="(messageTemplate.errors?.['required'] || messageTemplate.errors?.['email']) && (messageTemplate.touched || messageTemplate.dirty)"
-      [class.is-valid]="messageTemplate.errors == null && (messageTemplate.touched || messageTemplate.dirty)"></textarea>
-
-      <div *ngIf="messageTemplate.invalid && (messageTemplate.dirty || messageTemplate.touched)" class="invalid-feedback">
-        A message is required.
-      </div>
-    </div>
-
-    <button type="submit" [attr.disabled]="commentForm.invalid? true : null"  class="btn btn-primary">Submit</button>
+    <button type="submit" [attr.disabled]="commentForm.invalid? true : null" class="btn btn-primary">Submit</button>
 
   </form>
 </div>
