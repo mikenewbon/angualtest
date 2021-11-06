@@ -4,12 +4,13 @@
 
     <div class="mb-3">
       <label for="name" class="form-label">Full Name</label>
-      <p class="text-light">{{nameTemplate.errors | json}}</p>
+
       <input 
       type="text" 
       required 
       class="form-control" 
       name="name" 
+      placeholder="John Doe"
       [(ngModel)]="name" 
       minlength="4" 
       id="name" 
@@ -24,7 +25,7 @@
 
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
-      <p class="text-light">{{emailTemplate.errors | json}}</p>
+ 
       <input
       type="email"
       placeholder="name@email.com"
@@ -49,7 +50,7 @@
 
     <div class="mb-3">
       <label for="message" class="form-label">Message</label>
-      <p class="text-light">{{messageTemplate.errors | json}}</p>
+
       <textarea 
       class="form-control" 
       required name="message" 
