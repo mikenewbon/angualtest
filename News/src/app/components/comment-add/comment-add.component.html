@@ -37,6 +37,7 @@
       aria-describedby="emailHelp"
       #emailTemplate="ngModel"
       [(ngModel)]="email"
+      [ngModelOptions]="{ updateOn: 'blur' }"
       [class.is-invalid]="(emailTemplate.errors?.['required'] || emailTemplate.errors?.['email']) && (emailTemplate.touched || emailTemplate.dirty)"
       [class.is-valid]="emailTemplate.errors == null && (emailTemplate.touched || emailTemplate.dirty)">
 
