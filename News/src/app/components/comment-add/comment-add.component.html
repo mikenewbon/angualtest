@@ -1,7 +1,6 @@
 <div class="row text-light">
   <h5>Add Comment</h5>
   <form #commentForm="ngForm" (ngSubmit)="onSubmit();commentForm.reset()">
-
     <div class="mb-3">
       <label for="name" class="form-label">Full Name</label>
 
@@ -56,7 +55,7 @@
       class="form-control" 
       required name="message" 
       #messageTemplate="ngModel"
-      [(ngModel)]="message" 
+      [(ngModel)]="message"
       id="message" 
       rows="3"
       [class.is-invalid]="(messageTemplate.errors?.['required'] || messageTemplate.errors?.['email']) && (messageTemplate.touched || messageTemplate.dirty)"
@@ -67,7 +66,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" [attr.disabled]="commentForm.invalid? true : null"  class="btn btn-primary">Submit</button>
 
   </form>
 </div>
