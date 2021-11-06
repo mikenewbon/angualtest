@@ -25,6 +25,6 @@ export class CommentSectionComponent implements OnInit {
   }
 
   comment(comment: Comment) {
-
+    this.commentSerivce.addComment(comment).subscribe((comment) => (this.comments.push(comment)));
   }
 }

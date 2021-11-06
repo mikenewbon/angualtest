@@ -11,9 +11,9 @@ import { Comment } from '../../Comment';
 export class CommentAddComponent implements OnInit {
   @Output() onComment: EventEmitter<Comment> = new EventEmitter();
 
-  name: string | undefined;
-  email: string | undefined;
-  message: string | undefined;
+  name: string = '';
+  email: string = '';
+  message: string = '';
 
   constructor(private route: ActivatedRoute) { }
 
@@ -23,14 +23,13 @@ export class CommentAddComponent implements OnInit {
   onSubmit() {
     const articleId: number = +this.route.snapshot.paramMap.get('id')!;
     const newComment = {
+      articleId: articleId,
       name: this.name,
       email: this.email,
-      message: this.message,
-      id: undefined,
-      articleId: articleId
+      message: this.message
     }
 
-    // this.onComment.emit(newComment);
+    this.onComment.emit(newComment);
 
     this.name = '';
     this.email = '';

@@ -5,7 +5,17 @@
     <div class="mb-3">
       <label for="name" class="form-label">Full Name</label>
 
-      <input type="text" required class="form-control" name="name" [(ngModel)]="name" minlength="4" id="name" #nameTemplate="ngModel" [class.is-invalid]="nameTemplate.errors?.['required'] && (nameTemplate.touched || nameTemplate.dirty)">
+      <input 
+      type="text" 
+      required 
+      class="form-control" 
+      name="name" 
+      [(ngModel)]="name" 
+      minlength="4" 
+      id="name" 
+      #nameTemplate="ngModel" 
+      [class.is-invalid]="nameTemplate.errors?.['required'] && (nameTemplate.touched || nameTemplate.dirty)" 
+      [class.is-valid]="nameTemplate.errors! && (nameTemplate.touched || nameTemplate.dirty)">
 
       <div *ngIf="nameTemplate.invalid && (nameTemplate.dirty || nameTemplate.touched)" id="emailValidation" class="invalid-feedback">
         Please fill in your name.
@@ -14,7 +24,7 @@
 
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
-
+      
       <input
       type="email"
       placeholder="name@email.com"
@@ -26,16 +36,32 @@
       aria-describedby="emailHelp"
       #emailTemplate="ngModel"
       [(ngModel)]="email"
-      [class.is-invalid]="emailTemplate.errors?.['required'] && (commentForm.touched || commentForm.dirty)">
+      [class.is-invalid]="(emailTemplate.errors?.['required'] || emailTemplate.errors?.['email']) && (emailTemplate.touched || emailTemplate.dirty)"
+      [class.is-valid]="emailTemplate.errors! && (emailTemplate.touched || emailTemplate.dirty)">
 
-      <div *ngIf="emailTemplate.invalid && (emailTemplate.dirty || emailTemplate.touched)" id="emailValidation" class="invalid-feedback">
+      <div *ngIf="emailTemplate.errors?.['email'] && (emailTemplate.dirty || emailTemplate.touched)" class="invalid-feedback">
         Please use a valid email.
+      </div>
+      <div *ngIf="emailTemplate.errors?.['required'] && (emailTemplate.dirty || emailTemplate.touched)" class="invalid-feedback">
+        An email address is required.
       </div>
     </div>
 
     <div class="mb-3">
       <label for="message" class="form-label">Message</label>
-      <textarea class="form-control" required name="message" [(ngModel)]="message" id="message" rows="3"></textarea>
+      <textarea 
+      class="form-control" 
+      required name="message" 
+      #messageTemplate="ngModel"
+      [(ngModel)]="message" 
+      id="message" 
+      rows="3"
+      [class.is-invalid]="(messageTemplate.errors?.['required'] || messageTemplate.errors?.['email']) && (messageTemplate.touched || messageTemplate.dirty)"
+      [class.is-valid]="messageTemplate.errors! && (messageTemplate.touched || messageTemplate.dirty)"></textarea>
+
+      <div *ngIf="messageTemplate.invalid && (messageTemplate.dirty || messageTemplate.touched)" class="invalid-feedback">
+        A message is required.
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
