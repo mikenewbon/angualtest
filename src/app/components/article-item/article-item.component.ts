@@ -3,15 +3,8 @@ import { Article } from '../../Article';
 
 @Component({
   selector: 'app-article-item',
-  templateUrl: './article-item.component.html',
-  styleUrls: ['./article-item.component.scss']
+  templateUrl: './article-item.component.html'
 })
-export class ArticleItemComponent implements OnInit {
+export class ArticleItemComponent {
   @Input() article!: Article;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

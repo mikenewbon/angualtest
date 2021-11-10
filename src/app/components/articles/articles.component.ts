@@ -4,8 +4,7 @@ import { Article } from '../../Article';
 
 @Component({
   selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.scss']
+  templateUrl: './articles.component.html'
 })
 export class ArticlesComponent implements OnInit {
   articles: Article[] = [];

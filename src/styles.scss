@@ -8,9 +8,6 @@
 // scss-docs-start import-stack
 // Configuration  
 
-$vendorURL: '../node_modules/bootstrap/scss/';
-$localURL: './assets/styles/';
-
 @import "../node_modules/bootstrap/scss/functions";
 @import "./assets/styles/functions";
 

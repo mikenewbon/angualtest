@@ -26,8 +26,7 @@ import { CommentAddComponent } from './components/comment-add/comment-add.compon
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

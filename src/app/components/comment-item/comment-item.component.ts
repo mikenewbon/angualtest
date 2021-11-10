@@ -3,15 +3,9 @@ import { Comment } from '../../Comment';
 
 @Component({
   selector: 'app-comment-item',
-  templateUrl: './comment-item.component.html',
-  styleUrls: ['./comment-item.component.scss']
+  templateUrl: './comment-item.component.html'
 })
-export class CommentItemComponent implements OnInit {
+export class CommentItemComponent {
   @Input() comment!: Comment;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

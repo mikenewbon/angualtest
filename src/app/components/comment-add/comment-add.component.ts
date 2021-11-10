@@ -4,11 +4,10 @@ import { Comment } from '../../Comment';
 
 @Component({
   selector: 'app-comment-add',
-  templateUrl: './comment-add.component.html',
-  styleUrls: ['./comment-add.component.scss']
+  templateUrl: './comment-add.component.html'
 })
 
-export class CommentAddComponent implements OnInit {
+export class CommentAddComponent {
   @Output() onComment: EventEmitter<Comment> = new EventEmitter();
 
   name: string = '';
@@ -16,9 +15,6 @@ export class CommentAddComponent implements OnInit {
   message: string = '';
 
   constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-  }
 
   onSubmit() {
     const articleId: number = +this.route.snapshot.paramMap.get('id')!;

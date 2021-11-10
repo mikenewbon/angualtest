@@ -5,7 +5,6 @@
         <div class="col-6 mb-3">
           <label for="name" class="form-label" [class.text-danger]="nameTemplate.errors?.['required'] && (nameTemplate.touched || nameTemplate.dirty)"
           [class.text-success]="nameTemplate.errors == null && (nameTemplate.touched || nameTemplate.dirty)">Full Name</label>
-          <!-- {{ nameTemplate.errors | json }} -->
 
           <input type="text" required class="form-control" name="name" placeholder="John Doe" [(ngModel)]="name"
             id="name" #nameTemplate="ngModel"
